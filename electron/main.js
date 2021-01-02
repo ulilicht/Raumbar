@@ -29,12 +29,7 @@ function createMenubar() {
     });
 
     tray.on('right-click', function (event) {
-        // mb.hideWindow();
         tray.popUpContextMenu(contextMenu);
-    });
-
-    mb.on('ready', () => {
-        console.log('Menubar app is ready.');
     });
 }
 
