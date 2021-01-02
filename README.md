@@ -1,4 +1,4 @@
-# RAUMBAR
+# Raumbar
 
 Raumbar is an application to control Teufel Raumfeld Speakers from the Mac Menubar.
 

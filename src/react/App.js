@@ -81,7 +81,6 @@ class App extends React.Component {
         //const teufelRecentlyPlayed = '0/Favorites/RecentlyPlayed';
         window.raumkernel.managerDisposer.mediaListManager.getMediaList(teufelFavourites, teufelFavourites)
             .then(favouriteMediaList => {
-                console.log('receivedFavouriteMediaList', favouriteMediaList);
                 favouriteMediaList.forEach(mediaListEntry => {
                     if (!favourites.find(fav => fav.id === mediaListEntry.id)) {
                         favourites.push({
@@ -113,7 +112,6 @@ class App extends React.Component {
     }
 
     setVolume(targetVolume) {
-        console.log('NOW NEED TO SET VOLUME TO ', targetVolume);
         this.raumkernelHelper.setVolume(this.getSelectedZone(), targetVolume)
     }
 

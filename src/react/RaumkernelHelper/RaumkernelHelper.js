@@ -166,7 +166,6 @@ class RaumkernelHelper {
                     break;
                 default:
                     console.log('FAVOURITES WITH GIVEN ID NOT IMPLEMENTED ', classType)
-
             }
         })
     }
@@ -177,20 +176,17 @@ class RaumkernelHelper {
             //create a new zone
             const result = await this.raumkernel.managerDisposer.zoneManager.connectRoomToZone(zone.udn, '', true);
             zoneUDN = this.raumkernel.managerDisposer.zoneManager.getZoneUDNFromRoomUDN(zone.udn);
-
-            console.log('getRendererForZoneOrRoomUDN creating zone, result', result, zoneUDN);
         } else {
             zoneUDN = zone.udn;
         }
 
         let mediaRenderer = this.raumkernel.managerDisposer.deviceManager.mediaRenderersVirtual.get(zoneUDN);
-        console.log('getRendererForZoneOrRoomUDN getting media renderer', mediaRenderer);
 
         if (!mediaRenderer) {
             //todo: Is this really possible if we check for zone before?
             //todo: leagacy code, potentially remove.
             mediaRenderer = this.raumkernel.managerDisposer.deviceManager.mediaRenderers.get(zone.udn);
-            console.log('tried to get non-virtual renderer for udn. Result logged. ', zone.udn, mediaRenderer);
+            console.log('tried to get non-virtual renderer for udn. ', zone.udn, mediaRenderer);
         }
 
         if (!mediaRenderer) {
@@ -204,7 +200,6 @@ class RaumkernelHelper {
     }
 
     async leaveStandby(_mediaRendererVirtual) {
-
         let resultSum = [];
         let rendererUDNs = _mediaRendererVirtual.getRoomRendererUDNs();
 
