@@ -43,8 +43,6 @@ class App extends React.Component {
             return;
         }
 
-        console.log('EVENT: combinedZoneStateChanged', _combinedStateData)
-
         const availableZones = this.raumkernelHelper.getAvailableZones(_combinedStateData);
 
         this.setState({
@@ -60,9 +58,8 @@ class App extends React.Component {
                 autoSelectZone = this.state.availableZones.find(zone => zone.name === localStorage.selectedZoneName);
             }
 
-            if(!autoSelectZone){
+            if (!autoSelectZone) {
                 autoSelectZone = availableZones[0];
-                // autoSelectZone = await this.raumkernelHelper.getAutoSelectZone(availableZones);
             }
 
             this.setZone(autoSelectZone);
