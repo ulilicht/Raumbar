@@ -1,0 +1,47 @@
+.ErrorBoundary {
+    padding: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ErrorBoundary-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ErrorBoundary-buttons Button, .ErrorBoundary-report Button {
+    width: auto;
+    height: auto;
+    padding: 4px 14px;
+    font-weight: 400;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.ErrorBoundary-reloadButton {
+    color: white;
+    background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+}
+
+.ErrorBoundary-reloadButton:active {
+    background: linear-gradient(180deg, #3B7ADD 0%, #346DC5 100%);
+}
+
+.ErrorBoundary-showError , .ErrorBoundary-reportButton{
+    background: #FFFFFF;
+    border: 0.5px solid rgba(0, 0, 0, 0.12);
+}
+
+.ErrorBoundary-showError:active, .ErrorBoundary-reportButton:active {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.ErrorBoundary-error {
+    font-size: 9px;
+    font-family: Menlo, monospace;
+    flex: 1 1 auto;
+}
