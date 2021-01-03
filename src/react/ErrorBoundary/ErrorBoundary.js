@@ -12,7 +12,6 @@ class ErrorBoundary extends React.Component {
     }
 
     componentDidMount() {
-
         const onErrorHandler = (errorEvent) => {
             if (errorEvent.error.message.startsWith('EROFS: read-only file system, open \'/app.')) {
                 // this occurs within node-raumkernel if the app has no permissions to write to the filesystem.
@@ -27,7 +26,16 @@ class ErrorBoundary extends React.Component {
             });
         }
 
+        const onUnhandledRejectionHandler = (promiseRejectionEvent) => {
+            this.setState({
+                hasError: true,
+                error: promiseRejectionEvent.reason.message,
+                errorInfo: promiseRejectionEvent.reason.stack
+            });
+        }
+
         window.addEventListener('error', onErrorHandler.bind(this));
+        window.addEventListener('unhandledrejection', onUnhandledRejectionHandler.bind(this));
     }
 
     componentDidCatch(error, errorInfo) {
