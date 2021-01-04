@@ -16,7 +16,7 @@ class RaumkernelHelper {
             })
         });
 
-        availableZones.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        availableZones.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
 
         return availableZones;
     }
@@ -80,7 +80,7 @@ class RaumkernelHelper {
         }
     }
 
-    getRendererForZoneObj(zone){
+    getRendererForZoneObj(zone) {
         let mediaRenderer = null;
 
         if (!zone.isZone) {
@@ -157,15 +157,12 @@ class RaumkernelHelper {
         let zoneRenderer = await this.getOrCreateRendererForZoneOrRoomUDN(zone)
 
         this.leaveStandby(zoneRenderer).then((amountOfRenderersLeftStandby) => {
-            switch (classType) {
-                case 'object.container.trackContainer':
-                    zoneRenderer.loadContainer(id);
-                    break;
-                case 'object.item.audioItem.audioBroadcast.radio':
-                    zoneRenderer.loadSingle(id);
-                    break;
-                default:
-                    console.log('FAVOURITES WITH GIVEN ID NOT IMPLEMENTED ', classType)
+            if (classType.startsWith('object.container')) {
+                zoneRenderer.loadContainer(id);
+            } else if (classType.startsWith('object.item')) {
+                zoneRenderer.loadSingle(id);
+            } else {
+                alert(`Playback of ${classType} not implemented yet.`);
             }
         })
     }
