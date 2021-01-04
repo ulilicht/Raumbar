@@ -8,7 +8,7 @@ class RaumkernelHelper {
 
         let availableZones = [];
 
-        zones.forEach((zone, index) => {
+        zones.forEach((zone) => {
             availableZones.push({
                 name: zone.name,
                 udn: zone.udn,
@@ -40,7 +40,7 @@ class RaumkernelHelper {
         // "rendererState" is only filled after some time which causes AutoselectZone to fail.
         // setting a timeout helps here.
 
-        let getNowPlayingStateMapPromise = new Promise((resolve, reject) => {
+        let getNowPlayingStateMapPromise = new Promise((resolve) => {
             setTimeout(() => {
                 resolve(getNowPlayingStateMap())
             }, 2)
@@ -113,9 +113,13 @@ class RaumkernelHelper {
                 return result;
             }
 
-            result.classString = xmlDoc.getElementsByTagName('upnp:class')[0].childNodes[0].nodeValue;
-            result.track = xmlDoc.getElementsByTagName('dc:title')[0].childNodes[0].nodeValue;
-            result.image = xmlDoc.getElementsByTagName('upnp:albumArtURI')[0].childNodes[0].nodeValue;
+            const classStringNode = xmlDoc.getElementsByTagName('upnp:class')[0];
+            const trackNode = xmlDoc.getElementsByTagName('dc:title')[0]
+            const imageNode = xmlDoc.getElementsByTagName('upnp:albumArtURI')[0]
+
+            result.classString = classStringNode && classStringNode.childNodes[0].nodeValue;
+            result.track = trackNode && trackNode.childNodes[0].nodeValue;
+            result.image = imageNode && imageNode.childNodes[0].nodeValue;
 
             if (result.classString === 'object.item.audioItem.musicTrack') {
                 result.artist = xmlDoc.getElementsByTagName('upnp:artist')[0].childNodes[0].nodeValue;
@@ -171,7 +175,7 @@ class RaumkernelHelper {
         let zoneUDN = null;
         if (!zone.isZone) {
             //create a new zone
-            const result = await this.raumkernel.managerDisposer.zoneManager.connectRoomToZone(zone.udn, '', true);
+            await this.raumkernel.managerDisposer.zoneManager.connectRoomToZone(zone.udn, '', true);
             zoneUDN = this.raumkernel.managerDisposer.zoneManager.getZoneUDNFromRoomUDN(zone.udn);
         } else {
             zoneUDN = zone.udn;
