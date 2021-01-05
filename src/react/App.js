@@ -25,11 +25,14 @@ class App extends React.Component {
     componentDidMount() {
         window.raumkernel.on('systemReady', (_ready) => {
             console.log('EVENT: systemReady', _ready);
+
             this.setState({
-                isReady: true
+                isReady: _ready
             })
 
-            this.loadFavourites();
+            if (_ready) {
+                this.loadFavourites();
+            }
         });
 
         window.raumkernel.on('combinedZoneStateChanged', this.handleCombinedZoneStateChanged.bind(this));
