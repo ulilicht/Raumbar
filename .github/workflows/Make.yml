@@ -14,10 +14,10 @@ jobs:
       with:
         node-version: '14'
     - name: Install dependencies (yarn install) 
-    - run: yarn install
+      run: yarn install
     - name: Make the release (yarn make) 
-    - run: yarn make
+      run: yarn make
     - name: Upload release artifact
-    - uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with: 
         path: out/make/Raumbar-*.dmg
