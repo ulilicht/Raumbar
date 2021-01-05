@@ -61,8 +61,13 @@ class ErrorBoundary extends React.Component {
     }
 
     onReportButtonClick() {
-        const reportText = `Provide more information about your setup: 
+        const reportText = `Steps to reproduce the issue: 
+        - 
+        - 
         
+        
+        More information: 
+                
         
         
         ---------------------------------------

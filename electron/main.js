@@ -1,6 +1,7 @@
 const {app, Menu, Tray} = require('electron');
 const {menubar} = require('menubar');
 const path = require('path');
+const shell = require('electron').shell;
 
 let mb;
 
@@ -13,7 +14,7 @@ function createMenubar() {
 
     const tray = new Tray(iconPath);
     const contextMenu = Menu.buildFromTemplate([
-        {label: 'Toggle Developer Tools', type: 'normal', role: 'toggleDevTools'},
+        {label: 'Report issue', type: 'normal', click: () => {shell.openExternal('https://github.com/ulilicht/Raumbar/issues')}},
         {label: 'Quit Raumbar', type: 'radio', role: 'quit'},
     ])
 
