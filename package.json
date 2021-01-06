@@ -1,7 +1,7 @@
 {
   "name": "raumbar",
   "productName": "Raumbar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Mac Menubar app to control Teufel Raumfeld audio devices.",
   "author": "Ulrich Lichtenegger",
   "private": true,
