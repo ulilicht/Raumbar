@@ -1,6 +1,5 @@
 const path = require('path');
 
-
 const config = {
     "packagerConfig": {
         "icon": "public/AppIcon.icns",
@@ -39,5 +38,18 @@ const config = {
         }
     ]
 };
+
+try {
+    const codeSignConfig = require('./codesign.config.js');
+    config.packagerConfig.osxSign = {
+        "identity": codeSignConfig.identity,
+        "hardened-runtime": true,
+        "entitlements": "public/Info.plist",
+        "entitlements-inherit": "public/Info.plist",
+        "signature-flags": "library"
+    }
+} catch (e) {
+    console.log('\n SKIP CODE SIGN, CONFIG FILE NOT FOUND \n');
+}
 
 module.exports = config;
