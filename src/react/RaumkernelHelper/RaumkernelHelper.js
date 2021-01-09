@@ -9,11 +9,16 @@ class RaumkernelHelper {
         let availableZones = [];
 
         zones.forEach((zone) => {
-            availableZones.push({
+            const zoneObj = {
                 name: zone.name,
                 udn: zone.udn,
                 isZone: zone.isZone
-            })
+            }
+
+            const nowPlaying = this.getNowPlayingStateForZoneObj(zoneObj);
+            zoneObj.isPlaying = !!nowPlaying.isPlaying;
+
+            availableZones.push(zoneObj);
         });
 
         availableZones.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));

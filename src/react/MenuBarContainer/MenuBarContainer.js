@@ -1,6 +1,6 @@
 import Slider from 'react-rangeslider';
 import React from 'react';
-import {Pause, Play, Volume2, VolumeX, Speaker, Loader} from 'react-feather';
+import {Pause, Play, Volume2, VolumeX, Speaker, Loader, Music} from 'react-feather';
 import 'react-rangeslider/lib/index.css';
 import './MenuBarContainer.css';
 
@@ -97,7 +97,8 @@ const Zone = (props) => {
     return (
         <div className='zone' onClick={props.onClick}>
             <button type='button' className={props.isSelected ? 'active' : ''}><Speaker/></button>
-            <div className="zone-name">{props.zone.name}</div>
+            <div className="zone-name">{props.zone.name} </div>
+            <div className="zone-isPlaying">{props.zone.isPlaying && <Music/>}</div>
         </div>
     )
 }
