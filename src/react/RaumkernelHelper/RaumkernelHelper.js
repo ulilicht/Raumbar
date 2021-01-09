@@ -122,8 +122,11 @@ class RaumkernelHelper {
             result.image = imageNode && imageNode.childNodes[0].nodeValue;
 
             if (result.classString === 'object.item.audioItem.musicTrack') {
-                result.artist = xmlDoc.getElementsByTagName('upnp:artist')[0].childNodes[0].nodeValue;
-                result.album = xmlDoc.getElementsByTagName('upnp:album')[0].childNodes[0].nodeValue;
+                const artistNode = xmlDoc.getElementsByTagName('upnp:artist')[0];
+                const albumNode = xmlDoc.getElementsByTagName('upnp:album')[0];
+
+                result.artist = artistNode && artistNode.childNodes[0].nodeValue;
+                result.album = albumNode && albumNode.childNodes[0].nodeValue;
             }
         }
 
