@@ -9,7 +9,7 @@ const startUrl = process.env.ELECTRON_START_URL || `file://${path.join(__dirname
 const isDevelopmentMode = process.env.RAUMBAR_DEVELOPMENT_MODE === "true";
 
 function createMenubar() {
-    const iconPath = path.join(__dirname, '..', 'public', 'speaker-icon@2x.png');
+    const iconPath = path.join(__dirname, '..', 'public', 'speaker-icon.Template@2x.png');
 
     const tray = new Tray(iconPath);
     const contextMenu = Menu.buildFromTemplate([
