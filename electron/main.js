@@ -1,4 +1,4 @@
-const {app, Menu, Tray} = require('electron');
+const {app, Menu, Tray, dialog} = require('electron');
 const {menubar} = require('menubar');
 const path = require('path');
 const shell = require('electron').shell;
@@ -13,6 +13,12 @@ function createMenubar() {
 
     const tray = new Tray(iconPath);
     const contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'Open Spotify', type: 'normal', click: () => {
+                shell.openPath('/Applications/Spotify.app')
+                    .then(message => message.length > 0 && dialog.showErrorBox('Could not open Spotify', 'Please make sure Spotify is installed in /Applications/Spotify.app'));
+            }
+        },
         {
             label: 'Report issue', type: 'normal', click: () => {
                 shell.openExternal('https://github.com/ulilicht/Raumbar/issues')
