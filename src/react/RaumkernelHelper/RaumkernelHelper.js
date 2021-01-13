@@ -122,16 +122,16 @@ class RaumkernelHelper {
             const trackNode = xmlDoc.getElementsByTagName('dc:title')[0]
             const imageNode = xmlDoc.getElementsByTagName('upnp:albumArtURI')[0]
 
-            result.classString = classStringNode && classStringNode.childNodes[0].nodeValue;
-            result.track = trackNode && trackNode.childNodes[0].nodeValue;
-            result.image = imageNode && imageNode.childNodes[0].nodeValue;
+            result.classString = classStringNode && classStringNode.childNodes[0] && classStringNode.childNodes[0].nodeValue;
+            result.track = trackNode && trackNode.childNodes[0] && trackNode.childNodes[0].nodeValue;
+            result.image = imageNode && imageNode.childNodes[0] && imageNode.childNodes[0].nodeValue;
 
             if (result.classString === 'object.item.audioItem.musicTrack') {
                 const artistNode = xmlDoc.getElementsByTagName('upnp:artist')[0];
                 const albumNode = xmlDoc.getElementsByTagName('upnp:album')[0];
 
-                result.artist = artistNode && artistNode.childNodes[0].nodeValue;
-                result.album = albumNode && albumNode.childNodes[0].nodeValue;
+                result.artist = artistNode && artistNode.childNodes[0] && artistNode.childNodes[0].nodeValue;
+                result.album = albumNode && albumNode.childNodes[0] && albumNode.childNodes[0].nodeValue;
             }
         }
 
