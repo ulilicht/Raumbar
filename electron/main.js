@@ -31,7 +31,8 @@ function createMenubar() {
             vibrancy: 'light',
             visualEffectState: "active",
             alwaysOnTop: true
-        }
+        },
+        preloadWindow: true
     });
 
     tray.on('right-click', function (event) {
