@@ -140,7 +140,7 @@ class App extends React.Component {
                                           setPause={this.setPause.bind(this)}
                                           playFavourite={this.playFavourite.bind(this)}
                         /> : <div className="loading">
-                            App is not ready yet.
+                            Searching for Raumfeld devices...
                         </div>}
                 </ErrorBoundary>
             </div>

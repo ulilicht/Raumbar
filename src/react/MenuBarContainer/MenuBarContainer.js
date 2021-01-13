@@ -107,7 +107,7 @@ const ZoneSelector = (props) => {
     return (
         <div className='zone-selector'>
             <div className='divider'/>
-            <div className='zone-headline'>Zonen</div>
+            <div className='zone-headline'>Zones</div>
             {props.zones.map((zone, i) => {
                 return (<Zone key={zone.udn} isSelected={zone.udn === props.selectedZoneUdn} zone={zone}
                               onClick={() => props.setZone(zone)}/>)
@@ -143,7 +143,7 @@ const Favourites = (props) => {
     return (
         <div>
             <div className='divider'/>
-            <div className='favourites-headline'>Favoriten</div>
+            <div className='favourites-headline'>Favourites</div>
             <div className="favourites">
                 {props.favourites.map((favourite, i) => {
                     return (
