@@ -1,7 +1,7 @@
 {
   "name": "raumbar",
   "productName": "Raumbar",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Mac Menubar app to control Teufel Raumfeld audio devices.",
   "author": "Ulrich Lichtenegger",
   "private": true,
@@ -11,7 +11,7 @@
     "debug": "^4.3.1",
     "menubar": "^9.0.1",
     "new-github-issue-url": "^0.2.1",
-    "node-raumkernel": "^1.2.22"
+    "node-raumkernel": "ulilicht/node-raumkernel"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
