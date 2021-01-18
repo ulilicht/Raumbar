@@ -84,7 +84,7 @@ class App extends React.Component {
         //const teufelRecentlyPlayed = '0/Favorites/RecentlyPlayed';
         window.raumkernel.managerDisposer.mediaListManager.getMediaList(teufelFavourites, teufelFavourites)
             .then(favouriteMediaList => {
-                favouriteMediaList.forEach(mediaListEntry => {
+                favouriteMediaList && favouriteMediaList.forEach(mediaListEntry => {
                     if (!favourites.find(fav => fav.id === mediaListEntry.id)) {
                         favourites.push({
                             name: mediaListEntry.title,
