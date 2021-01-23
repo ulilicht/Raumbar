@@ -76,7 +76,15 @@ class RaumkernelHelper {
 
         const isLoading = mediaRenderer && mediaRenderer.rendererState.TransportState === "TRANSITIONING";
         const isPlaying = mediaRenderer && mediaRenderer.rendererState.TransportState === "PLAYING";
-        const canPlayNext = mediaRenderer && mediaRenderer.rendererState.CurrentTransportActions && mediaRenderer.rendererState.CurrentTransportActions.indexOf("Next") > -1;
+
+        let canPlayNext = false;
+        let canPlayPause = false;
+        if (mediaRenderer && mediaRenderer.rendererState.CurrentTransportActions) {
+            const CTA = mediaRenderer.rendererState.CurrentTransportActions;
+
+            canPlayNext = CTA.indexOf("Next") > -1;
+            canPlayPause = (CTA.indexOf("Play") > -1 || CTA.indexOf("Pause") > -1 || CTA.indexOf("Stop") > -1);
+        }
 
         return {
             artist: metaData.artist,
@@ -86,6 +94,7 @@ class RaumkernelHelper {
             isLoading: isLoading,
             isMuted: mediaRenderer && mediaRenderer.rendererState.Mute === 1,
             volume: mediaRenderer && parseInt(mediaRenderer.rendererState.Volume),
+            canPlayPause: canPlayPause,
             canPlayNext: !isLoading && isPlaying && canPlayNext
         }
     }

@@ -70,6 +70,8 @@ const CurrentlyPlaying = (props) => {
         e.target.classList.add('currently-playing-image-error');
     }
 
+    const shouldShowPlayPause = props.nowPlaying.canPlayPause || props.nowPlaying.isLoading;
+
 
     return (
         <div className='currently-playing rounded module-bg'>
@@ -85,9 +87,9 @@ const CurrentlyPlaying = (props) => {
                 </div>
             </div>
             <div className='currently-playing-controls'>
-                <button type='button' onClick={() => props.setPause()}>
+                {shouldShowPlayPause ? <button type='button' onClick={() => props.setPause()}>
                     {playIcon}
-                </button>
+                </button> : ''}
                 {props.nowPlaying.canPlayNext ? <button className='currently-playing-controls-next' type='button' onClick={() => props.setNext()}>
                     {<FastForward />}
                 </button> : ''}
