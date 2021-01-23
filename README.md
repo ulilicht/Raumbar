@@ -6,7 +6,16 @@ Raumbar is an application to control Teufel Raumfeld Speakers from the Mac Menub
 
 ## Installation
 
-Download the DMG installer for Mac.
+Download the DMG installer for Mac from the [releases page](https://github.com/ulilicht/Raumbar/releases). 
+
+## Known Issues 
+
+The app is not signed, as I don't own an Apple Developer Certificate. There are two shortcomings: 
+
+- On first launch, the app needs to be launched from Mac system settings / security. 
+- On every start, the app will ask to accept incoming network connections
+
+You can overcome both by compiling the app from source yourself using your own developer certificate (see instructions below) 
 
 ## Development
 
