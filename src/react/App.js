@@ -122,6 +122,10 @@ class App extends React.Component {
         this.raumkernelHelper.setPause(this.getSelectedZone(), this.state.nowPlaying.isPlaying);
     }
 
+    setNext() {
+        this.raumkernelHelper.setNext(this.getSelectedZone());
+    }
+
     render() {
         console.log('RENDERING, state is: ', this.state);
 
@@ -138,6 +142,7 @@ class App extends React.Component {
                                           setMute={this.setMute.bind(this)}
                                           favourites={this.state.favourites}
                                           setPause={this.setPause.bind(this)}
+                                          setNext={this.setNext.bind(this)}
                                           playFavourite={this.playFavourite.bind(this)}
                         /> : <div className="loading">
                             Searching for Raumfeld devices...

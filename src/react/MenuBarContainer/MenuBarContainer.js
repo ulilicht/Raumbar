@@ -1,6 +1,6 @@
 import Slider from 'react-rangeslider';
 import React from 'react';
-import {Pause, Play, Volume2, VolumeX, Speaker, Loader, Music} from 'react-feather';
+import {Pause, Play, Volume2, VolumeX, Speaker, Loader, Music, FastForward} from 'react-feather';
 import 'react-rangeslider/lib/index.css';
 import './MenuBarContainer.css';
 
@@ -88,6 +88,9 @@ const CurrentlyPlaying = (props) => {
                 <button type='button' onClick={() => props.setPause()}>
                     {playIcon}
                 </button>
+                {props.nowPlaying.canPlayNext ? <button className='currently-playing-controls-next' type='button' onClick={() => props.setNext()}>
+                    {<FastForward />}
+                </button> : ''}
             </div>
         </div>
     )
@@ -160,7 +163,7 @@ export default class MenuBarContainer extends React.Component {
         if (this.props.selectedZoneUdn) {
             return (
                 <div className='card-wrapper rounded'>
-                    <CurrentlyPlaying nowPlaying={this.props.nowPlaying} setPause={this.props.setPause}/>
+                    <CurrentlyPlaying nowPlaying={this.props.nowPlaying} setPause={this.props.setPause} setNext={this.props.setNext}/>
                     <VolumeSlider nowPlaying={this.props.nowPlaying} setMute={this.props.setMute}
                                   setVolume={this.props.setVolume}/>
                     <ZoneSelector zones={this.props.availableZones} selectedZoneUdn={this.props.selectedZoneUdn}

@@ -79,8 +79,12 @@
 }
 
 .currently-playing-controls button svg {
-    fill: black;
-    width: 30px;
+    fill: rgba(0, 0, 0, 0.7);
+    width: 20px;
+}
+
+.currently-playing-controls-next {
+    margin-left: 5px;
 }
 
 
@@ -184,9 +188,10 @@
     flex-grow: 0;
     height: 16px;
 }
-.zone-isPlaying svg{
+
+.zone-isPlaying svg {
     height: 16px;
-    color: rgba(0,0,0,0.4);
+    color: rgba(0, 0, 0, 0.4);
 }
 
 
