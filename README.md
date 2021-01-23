@@ -2,7 +2,7 @@
 
 Raumbar is an application to control Teufel Raumfeld Speakers from the Mac Menubar.
 
-![Raumbar Screenshot](https://user-images.githubusercontent.com/456963/103465877-f4300c00-4d3f-11eb-905b-c16c11d4a0a2.png)
+![Raumbar Screenshot](https://user-images.githubusercontent.com/456963/105579160-0cb2a580-5d85-11eb-94b2-875483060357.png)
 
 ## Installation
 
