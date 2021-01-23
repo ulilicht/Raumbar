@@ -74,14 +74,19 @@ class RaumkernelHelper {
         const metaDataXML = mediaRenderer && (mediaRenderer.rendererState.CurrentTrackMetaData || mediaRenderer.rendererState.AVTransportURIMetaData);
         let metaData = this.getMetaDataforXML(metaDataXML);
 
+        const isLoading = mediaRenderer && mediaRenderer.rendererState.TransportState === "TRANSITIONING";
+        const isPlaying = mediaRenderer && mediaRenderer.rendererState.TransportState === "PLAYING";
+        const canPlayNext = mediaRenderer && mediaRenderer.rendererState.CurrentTransportActions && mediaRenderer.rendererState.CurrentTransportActions.indexOf("Next") > -1;
+
         return {
             artist: metaData.artist,
             track: metaData.track,
             image: metaData.image,
-            isPlaying: mediaRenderer && mediaRenderer.rendererState.TransportState === "PLAYING",
-            isLoading: mediaRenderer && mediaRenderer.rendererState.TransportState === "TRANSITIONING",
+            isPlaying: isPlaying,
+            isLoading: isLoading,
             isMuted: mediaRenderer && mediaRenderer.rendererState.Mute === 1,
-            volume: mediaRenderer && parseInt(mediaRenderer.rendererState.Volume)
+            volume: mediaRenderer && parseInt(mediaRenderer.rendererState.Volume),
+            canPlayNext: !isLoading && isPlaying && canPlayNext
         }
     }
 
@@ -144,6 +149,15 @@ class RaumkernelHelper {
             console.log('Could not load zone renderer for UDN ', zone);
         }
         return shouldPause ? renderer.pause() : renderer.play();
+    }
+
+    setNext(zone) {
+        let renderer = this.getRendererForZoneObj(zone);
+        if (!renderer) {
+            console.log('Could not load zone renderer for UDN ', zone);
+        }
+
+        return renderer.next();
     }
 
     setMute(zone, shouldMute) {
