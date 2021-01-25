@@ -13,4 +13,4 @@ Raumbar allows you to control the Teufel Raumfeld HiFi System from the Mac Menub
 
 ### Download
 
-Download the latest version of Raumbar from the Releases page: https://github.com/ulilicht/Raumbar/releases 
+Download the latest version of Raumbar from the [Releases page](https://github.com/ulilicht/Raumbar/releases) 
