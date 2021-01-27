@@ -252,6 +252,27 @@ class RaumkernelHelper {
         return resultSum;
     }
 
+    async loadFavourites() {
+        const favourites = [];
+        const teufelFavourites = '0/Favorites/MyFavorites';
+        //const teufelRecentlyPlayed = '0/Favorites/RecentlyPlayed';
+
+        const favouriteMediaList = await this.raumkernel.managerDisposer.mediaListManager.getMediaList(teufelFavourites, teufelFavourites);
+        favouriteMediaList && favouriteMediaList.forEach(mediaListEntry => {
+            if (!favourites.find(fav => fav.id === mediaListEntry.id)) {
+                favourites.push({
+                    name: mediaListEntry.title,
+                    image: mediaListEntry.albumArtURI,
+                    id: mediaListEntry.id,
+                    class: mediaListEntry.class
+                })
+            }
+        });
+
+        return favourites;
+    }
+
+
 }
 
 export default RaumkernelHelper;

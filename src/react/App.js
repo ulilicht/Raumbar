@@ -79,25 +79,11 @@ class App extends React.Component {
     }
 
     loadFavourites() {
-        const favourites = [];
-        const teufelFavourites = '0/Favorites/MyFavorites';
-        //const teufelRecentlyPlayed = '0/Favorites/RecentlyPlayed';
-        window.raumkernel.managerDisposer.mediaListManager.getMediaList(teufelFavourites, teufelFavourites)
-            .then(favouriteMediaList => {
-                favouriteMediaList && favouriteMediaList.forEach(mediaListEntry => {
-                    if (!favourites.find(fav => fav.id === mediaListEntry.id)) {
-                        favourites.push({
-                            name: mediaListEntry.title,
-                            image: mediaListEntry.albumArtURI,
-                            id: mediaListEntry.id,
-                            class: mediaListEntry.class
-                        })
-                    }
-                });
-                this.setState({
-                    favourites: favourites
-                })
+        this.raumkernelHelper.loadFavourites().then(favourites => {
+            this.setState({
+                favourites: favourites
             })
+        });
     }
 
     setMute() {
