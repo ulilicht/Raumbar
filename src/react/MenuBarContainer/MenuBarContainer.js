@@ -10,6 +10,7 @@ class VolumeSlider extends React.Component {
         this.state = {
             volumeValueInternal: props.nowPlaying.volume
         };
+        this.mouseWheelEventInProgress = false;
     }
 
     setVolumeValueInternal(value) {
@@ -28,9 +29,26 @@ class VolumeSlider extends React.Component {
         }
     }
 
+    onWheel(event) {
+        if (event.deltaX !== 0) {
+            const scrollIncrement = Math.sign(event.deltaX) * 0.3;
+            this.setVolumeValueInternal(this.state.volumeValueInternal - scrollIncrement);
+
+
+            // when adjusting the volume with mousewheel, send the change only every 1 second to outside.
+            if (this.mouseWheelEventInProgress === false) {
+                this.mouseWheelEventInProgress = true;
+                setTimeout(() => {
+                    this.mouseWheelEventInProgress = false;
+                    this.changeVolume();
+                }, 1000);
+            }
+        }
+    }
+
     render() {
         return (
-            <div className='volume-slider rounded module-bg'>
+            <div className='volume-slider rounded module-bg' onWheel={(e) => this.onWheel(e)}>
                 <div className='volume-slider-headline'>Volume</div>
                 <div className='volume-slider-inner'>
                     <button type='button' className='icon' onClick={() => this.props.setMute()}>
@@ -77,7 +95,8 @@ const CurrentlyPlaying = (props) => {
         <div className='currently-playing rounded module-bg'>
             <div className='currently-playing-image'>
                 {props.nowPlaying.image ?
-                    <img src={props.nowPlaying.image} width="80" alt={props.nowPlaying.track} onError={onErrorAppendClass}/> :
+                    <img src={props.nowPlaying.image} width="80" alt={props.nowPlaying.track}
+                         onError={onErrorAppendClass}/> :
                     <div className="currently-playing-placeholder"></div>}
             </div>
             <div className='currently-playing-content'>
@@ -90,9 +109,10 @@ const CurrentlyPlaying = (props) => {
                 {shouldShowPlayPause ? <button type='button' onClick={() => props.setPause()}>
                     {playIcon}
                 </button> : ''}
-                {props.nowPlaying.canPlayNext ? <button className='currently-playing-controls-next' type='button' onClick={() => props.setNext()}>
-                    {<FastForward />}
-                </button> : ''}
+                {props.nowPlaying.canPlayNext ?
+                    <button className='currently-playing-controls-next' type='button' onClick={() => props.setNext()}>
+                        {<FastForward/>}
+                    </button> : ''}
             </div>
         </div>
     )
@@ -131,7 +151,8 @@ const Favourite = (props) => {
     if (props.favourite.image) {
         html = (
             <div className='favourite' onClick={props.onClick}>
-                <img src={props.favourite.image} alt={props.favourite.name} className="favourite-image" onError={onErrorAppendClass}/>
+                <img src={props.favourite.image} alt={props.favourite.name} className="favourite-image"
+                     onError={onErrorAppendClass}/>
             </div>
         )
     } else {
@@ -165,7 +186,8 @@ export default class MenuBarContainer extends React.Component {
         if (this.props.selectedZoneUdn) {
             return (
                 <div className='card-wrapper rounded'>
-                    <CurrentlyPlaying nowPlaying={this.props.nowPlaying} setPause={this.props.setPause} setNext={this.props.setNext}/>
+                    <CurrentlyPlaying nowPlaying={this.props.nowPlaying} setPause={this.props.setPause}
+                                      setNext={this.props.setNext}/>
                     <VolumeSlider nowPlaying={this.props.nowPlaying} setMute={this.props.setMute}
                                   setVolume={this.props.setVolume}/>
                     <ZoneSelector zones={this.props.availableZones} selectedZoneUdn={this.props.selectedZoneUdn}
