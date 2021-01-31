@@ -1,4 +1,4 @@
-const {app, Menu, Tray, dialog} = require('electron');
+const {app, Menu, Tray, dialog, BrowserWindow} = require('electron');
 const {menubar} = require('menubar');
 const path = require('path');
 const shell = require('electron').shell;
@@ -36,7 +36,9 @@ function createMenubar() {
             },
             vibrancy: 'light',
             visualEffectState: "active",
-            alwaysOnTop: true
+            alwaysOnTop: true,
+            width: 410,
+            height: 450
         },
         preloadWindow: true
     });
@@ -52,6 +54,14 @@ function createMenubar() {
     });
 
     mb.on('focus-lost', () => fadeOut(mb));
+
+    if (isDevelopmentMode) {
+        mb.on('after-create-window', () => {
+            let devtools = new BrowserWindow();
+            mb.window.webContents.setDevToolsWebContents(devtools.webContents);
+            mb.window.webContents.openDevTools({ mode: 'detach' });
+        });
+    }
 }
 
 app.on('ready', createMenubar);

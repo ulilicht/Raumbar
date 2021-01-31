@@ -2,3 +2,8 @@
     padding: 20px;
     font-weight: 600;
 }
+
+.win #root {
+    background-color: rgb(243, 243, 243);
+    overflow-x: hidden;
+}
