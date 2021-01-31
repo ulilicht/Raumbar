@@ -29,7 +29,11 @@ To get started, read about the concepts in
 - https://www.electronforge.io/
 
 ### Preparation
+#### Basics 
+You need NodeJS and preferably Yarn. 
+If you want to build for Windows as well, you need to install `mono` additionally. 
 
+#### Code signing
 The App needs apple codesigning to run, as it opens a Network server. If you don't add a certificate, the app will still
 run but ask for permissions to access the network on each launch. 
 

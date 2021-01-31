@@ -3,7 +3,8 @@ const path = require('path');
 const config = {
     "packagerConfig": {
         "icon": "public/AppIcon.icns",
-        "extendInfo": "public/Info.plist"
+        "extendInfo": "public/Info.plist",
+        asar: true
     },
     "makers": [
         {
@@ -35,8 +36,12 @@ const config = {
                     }
                 }
             }
+        },
+        {
+            name: '@electron-forge/maker-squirrel',
+            iconUrl: "public/AppIcon.ico"
         }
-    ]
+        ]
 };
 
 try {

@@ -16,7 +16,9 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "cross-env": "^7.0.3",
     "electron": "^11.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -25,8 +27,8 @@
     "react-scripts": "4.0.1"
   },
   "scripts": {
-    "start": "export BROWSER=none && react-scripts start",
-    "start-electron": "export ELECTRON_START_URL=http://localhost:3000 && export RAUMBAR_DEVELOPMENT_MODE=true && electron-forge start",
+    "start": "cross-env BROWSER=none react-scripts start",
+    "start-electron": "cross-env ELECTRON_START_URL=http://localhost:3000 RAUMBAR_DEVELOPMENT_MODE=true electron-forge start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "package": "react-scripts build && electron-forge package",
