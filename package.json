@@ -8,8 +8,8 @@
   "main": "electron/main.js",
   "homepage": "./",
   "dependencies": {
-    "debug": "^4.3.1",
-    "menubar": "^9.0.1",
+    "debug": "^4.3.2",
+    "menubar": "^9.0.6",
     "new-github-issue-url": "^0.2.1",
     "node-raumkernel": "ulilicht/node-raumkernel"
   },
@@ -17,9 +17,9 @@
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "^11.1.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "electron": "^11.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
     "react-rangeslider": "^2.2.0",
     "react-scripts": "4.0.3"
