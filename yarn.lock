@@ -8543,10 +8543,10 @@ memory-fs@^0.5.0:
     errno "^0.1.3"
     readable-stream "^2.0.1"
 
-menubar@^9.0.6:
-  version "9.0.6"
-  resolved "https://registry.yarnpkg.com/menubar/-/menubar-9.0.6.tgz#c4358931d5c71510024363b314a6752ead826422"
-  integrity sha512-iCNUC/4l3MX5TtFWmtfteTAC2/jMjhVQ/CylELbpBKtFb760iGPWt8AheFMr1bIgskEQ14IrMglGMNScSGqAAA==
+menubar@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/menubar/-/menubar-9.1.1.tgz#0ab278fc15d9e225714bd1f74038fa1b6650fdcc"
+  integrity sha512-nh/Gj1o90389RqtAjzJmFUnXxcN008fFoXXSILXTFszED64BIMpC3ZYYl6hIfNiLoKFBph2bwqHpW+BO0y//fQ==
   dependencies:
     electron-positioner "^4.1.0"
 
