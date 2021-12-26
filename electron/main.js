@@ -33,6 +33,7 @@ function createMenubar() {
         browserWindow: {
             webPreferences: {
                 preload: path.join(__dirname, 'preload.js'),
+                contextIsolation: false
             },
             vibrancy: 'light',
             visualEffectState: "active",
