@@ -1,4 +1,4 @@
-const {app, Menu, Tray, dialog} = require('electron');
+const {app, Menu, Tray, dialog, powerMonitor} = require('electron');
 const {menubar} = require('menubar');
 const path = require('path');
 const shell = require('electron').shell;
@@ -52,9 +52,15 @@ function createMenubar() {
     });
 
     mb.on('focus-lost', () => fadeOut(mb));
+
+
+    powerMonitor.on('resume', () => {
+        mb.window.reload(); // raumkernel can loose the connection if suspended for a longer while.
+    });
 }
 
 app.on('ready', createMenubar);
+
 
 if (!isDevelopmentMode) {
     console.log('Will attempt to set Raumbar as startup application.');
