@@ -14,7 +14,7 @@
     "node-raumkernel": "ulilicht/node-raumkernel"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/cli": "^6.0.0-beta.69",
     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "electron": "^16.0.5",
