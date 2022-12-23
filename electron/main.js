@@ -64,11 +64,16 @@ app.on('ready', createMenubar);
 
 
 if (!isDevelopmentMode) {
-    console.log('Will attempt to set Raumbar as startup application.');
-    app.setLoginItemSettings({
-        openAtLogin: true,
-        openAsHidden: true
-    });
+    const loginItemSettings = app.getLoginItemSettings(); 
+
+    if(!loginItemSettings.openAtLogin){
+        console.log('Will attempt to set Raumbar as startup application.');
+
+        app.setLoginItemSettings({
+            openAtLogin: true,
+            openAsHidden: true
+        });
+    }
 }
 
 
