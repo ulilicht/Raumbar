@@ -23,7 +23,7 @@ const config = {
                         "x": 139,
                         "y": 190,
                         "type": "file",
-                        "path": path.join(__dirname, 'out/Raumbar-darwin-x64/Raumbar.app')
+                        "path": path.join(__dirname, 'out/Raumbar-darwin-universal/Raumbar.app')
                     }
                 ],
                 "additionalDMGOptions": {
