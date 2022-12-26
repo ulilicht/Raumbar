@@ -9,7 +9,7 @@
   "homepage": "./",
   "dependencies": {
     "debug": "^4.3.4",
-    "menubar": "^9.1.1",
+    "menubar": "^9.2.3",
     "new-github-issue-url": "^1.0.0",
     "node-raumkernel": "ulilicht/node-raumkernel"
   },
