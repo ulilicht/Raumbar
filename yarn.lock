@@ -7937,10 +7937,10 @@ memfs@^3.1.2, memfs@^3.2.2:
   dependencies:
     fs-monkey "1.0.3"
 
-menubar@^9.1.1:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/menubar/-/menubar-9.1.1.tgz#0ab278fc15d9e225714bd1f74038fa1b6650fdcc"
-  integrity sha512-nh/Gj1o90389RqtAjzJmFUnXxcN008fFoXXSILXTFszED64BIMpC3ZYYl6hIfNiLoKFBph2bwqHpW+BO0y//fQ==
+menubar@^9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/menubar/-/menubar-9.3.0.tgz#a245be0cedbfeb3900d23a37e87a71d2a0f0c7a5"
+  integrity sha512-TC7R5YR+OKVfFIyGiZ+HkKmY0hMLhOseX6wN0DxWzzF1CNhZ2Tm3hMB6erc35jzBmrsMDghRm89dtSeY0VjmjQ==
   dependencies:
     electron-positioner "^4.1.0"
 
